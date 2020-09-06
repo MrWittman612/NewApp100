@@ -3,12 +3,15 @@ var path = require('path');
 var logger = require('morgan');
 var { login, register, protectedRoute } = require('./api/auth');
 var usersRouter = require('./api/users/users.router');
+var connectMongoDB = require('./hoc/connectMongoDB');
 
 var app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+connectMongoDB();
 
 app.post('/api/login', login);
 app.post('/api/register', register);
