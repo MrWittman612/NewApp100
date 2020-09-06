@@ -1,47 +1,33 @@
 version: '3.8'
 
 services:
-  # nginx:
-  #   build:
-  #     context: ./nginx
-  #   container_name: production_nginx
-  #   ports:
-  #     - 80:80
-  #     - 443:443
+  nginx:
+    build:
+      context: ./nginx
+    container_name: production_nginx
+    ports:
+      - 80:80
+      - 443:443
 
-  #Express API service
-  # api:
-  #   image: node:14
-  #   # command: ["npm", "run", "start"]
-  #   # command: ["sleep", "10000"]
-  #   command: ["ls", "-la", "/cod"]
-  #   working_dir: /code
-  #   volumes:
-  #     - type: volume
-  #       source: server
-  #       target: /code
-  #       volume:
-  #         nocopy: true
-  #   ports:
-  #     - 3000:3000
-
-  # create-react-app's "serve" thing.
-  react-dev:
-    image: node:14
-    command: ["cd", ./client", "&&", "ls"]
-    working_dir: /code
+  api:
+    image: node:alpine
+    # command: ["npm", "run", "start"]
+    # command: ["sleep", "10000"]
+    command: ["npm", "run", "start"]
+#    command: ["ls", "-lah"]
+    working_dir: /code/server
     volumes:
-      - ./:/code
-      # - type: volume
-      #   source: client
-      #   target: /code
-        # volume:
-        #   nocopy: true
+      - ./server:/code/server
+    ports:
+      - 3000:3000
+
+  react-dev:
+    image: node:alpine
+    command: ["npm", "run", "start"]
+    # command: ["ls", "-lah", "/code/client"]
+#    command: ["ls", "-lah"]
+    working_dir: /code/client
+    volumes:
+      - ./client:/code/client
     ports:
       - 3001:3000
-
-
-volumes:
-  server:
-#   client:
-
