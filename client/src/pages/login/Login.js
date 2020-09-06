@@ -24,7 +24,7 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { saveAuthToken } from '../../utils/auth';
+import { saveAuthToken } from '../../hoc/auth';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
