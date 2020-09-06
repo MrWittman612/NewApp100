@@ -1,16 +1,18 @@
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var { login, register, protectedRoute } = require('./api/auth');
+var usersRouter = require('./api/users/users.router');
 
 var app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.post('/api/login', login);
+app.post('/api/register', register);
+app.use('/api/users', protectedRoute, usersRouter);
 
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
