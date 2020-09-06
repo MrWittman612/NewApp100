@@ -5,7 +5,10 @@
   "main": "./server/bin/www",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
+    "start": "node .",
+    "dev": "nodemon .",
+    "client": "npm run start --prefix client",
+    "start:dev": "concurrently \"npm run dev\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
