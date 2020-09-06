@@ -37,7 +37,7 @@ const login = async (req, res) => {
       return res.status(401).send(invalid);
     }
 
-    const token = newToken(user);
+    let token = newToken(user);
     return res.status(201).send({ token });
   } catch (error) {
     return res.status(500).end();
@@ -72,11 +72,11 @@ const register = async (req, res) => {
       password: hash,
     };
 
-    const createUserResponse = User.create(newUser);
+    const createUserResponse = await User.create(newUser);
 
-    const freshToken = newToken(createUserResponse);
+    let token = newToken(createUserResponse);
 
-    return res.status(200).send({ freshToken });
+    return res.status(200).send({ token });
   } catch (e) {
     return res.status(500).send(invalid);
   }

@@ -1,0 +1,42 @@
+
+
+@baseURL = http://localhost:3001
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTU1MjM2Y2YwZGM1NDMxYzI0NzIwZiIsImlhdCI6MTU5OTQyNzY0NCwiZXhwIjoxNjAyMDE5NjQ0fQ.22kx1m094nlD4drEAehXKNOHZwzGWCiLS1vpsLJwaGc
+
+
+###
+
+# @name Login
+POST {{baseURL}}/api/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email":"j@j.com",
+  "password":"password"
+}
+
+###
+
+# @name Register
+
+POST {{baseURL}}/api/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "name":"joe",
+  "email":"j@j.com",
+  "password":"password"
+}
+
+###
+
+# @name GetUser 
+
+GET {{baseURL}}/api/users HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+
+
