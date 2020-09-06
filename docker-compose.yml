@@ -1,27 +1,47 @@
-version: '3'
+version: '3.8'
 
 services:
-  nginx: 
-    image: nginx:latest
-    container_name: production_nginx
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/
-    ports:
-      - 80:80
-      - 443:443
+  # nginx:
+  #   build:
+  #     context: ./nginx
+  #   container_name: production_nginx
+  #   ports:
+  #     - 80:80
+  #     - 443:443
 
-  # Express API service
-  api:
-    image: node:14-alpine
-    volumes:
-      - ./server:/code
-    ports:
-      - 3000:3000
-    
+  #Express API service
+  # api:
+  #   image: node:14
+  #   # command: ["npm", "run", "start"]
+  #   # command: ["sleep", "10000"]
+  #   command: ["ls", "-la", "/cod"]
+  #   working_dir: /code
+  #   volumes:
+  #     - type: volume
+  #       source: server
+  #       target: /code
+  #       volume:
+  #         nocopy: true
+  #   ports:
+  #     - 3000:3000
+
   # create-react-app's "serve" thing.
   react-dev:
-    image: node:14-alpine
+    image: node:14
+    command: ["cd", ./client", "&&", "ls"]
+    working_dir: /code
     volumes:
-      - ./client:/code
+      - ./:/code
+      # - type: volume
+      #   source: client
+      #   target: /code
+        # volume:
+        #   nocopy: true
     ports:
       - 3001:3000
+
+
+volumes:
+  server:
+#   client:
+
