@@ -7,19 +7,19 @@ import Register from './pages/register/Register';
 function App() {
   return (
     <Router>
-      <>
+      <div>
         <Switch>
-          <Route path='/'>
+          <Route exact path='/'>
             <h1>hello</h1>
           </Route>
           <Route path='/login'>
             <Login />
           </Route>
           <Route path='/register'>
-            <Login />
+            <Register />
           </Route>
         </Switch>
-      </>
+      </div>
     </Router>
   );
 }
