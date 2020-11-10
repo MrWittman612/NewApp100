@@ -1,6 +1,6 @@
 import {
   Avatar,
-  Box,
+  // Box,
   Button,
   // Checkbox,
   Container,
@@ -21,7 +21,7 @@ import {
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { saveAuthToken } from '../../hoc/auth';
+import { saveAuthToken } from '../../utils/auth';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
