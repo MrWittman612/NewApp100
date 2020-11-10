@@ -45,10 +45,23 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   styledHelperText: { color: 'red' },
+  recoverPasswordLink: {
+    // color: currentColor;
+    cursor: 'not-allowed',
+    opacity: '0.5',
+    textDecoration: 'none',
+  },
 }));
 
 export default function Login() {
-  const { paper, avatar, form, submit, styledHelperText } = useStyles();
+  const {
+    paper,
+    avatar,
+    form,
+    submit,
+    styledHelperText,
+    recoverPasswordLink,
+  } = useStyles();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -169,7 +182,11 @@ export default function Login() {
 
           <Grid container>
             <Grid item xs>
-              <Link to={'/dashboard'} variant='body2'>
+              <Link
+                className={recoverPasswordLink}
+                to={'/dashboard'}
+                variant='body2'
+              >
                 {' Forgot password?'}
               </Link>
             </Grid>
