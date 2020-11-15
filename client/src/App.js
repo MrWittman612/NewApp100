@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Login from './pages/login/Login';
@@ -12,7 +12,7 @@ checkAuth();
 function App() {
   return (
     <Router>
-      <div>
+      <Fragment>
         <Switch>
           <Route exact path='/'>
             <LandingPage />
@@ -27,7 +27,7 @@ function App() {
             <Dashboard />
           </PrivateRoute>
         </Switch>
-      </div>
+      </Fragment>
     </Router>
   );
 }

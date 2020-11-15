@@ -25,6 +25,7 @@ import { Link, useHistory } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { saveAuthToken } from '../../utils/auth';
+import MyCustomTextField from '../../components/atoms/textfield';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -114,7 +115,7 @@ export default function Login() {
           Sign in
         </Typography>
         <form className={form} onSubmit={loginUser} noValidate>
-          <TextField
+          <MyCustomTextField
             label='Email Address'
             id='email'
             name='email'
@@ -122,7 +123,8 @@ export default function Login() {
             onChange={updateFormData}
             error={error}
             type='email'
-            variant='outlined'
+            variant='standard'
+            size='medium'
             margin='normal'
             autoComplete='email'
             fullWidth
@@ -156,7 +158,7 @@ export default function Login() {
             FormHelperTextProps={{
               classes: { root: styledHelperText },
             }}
-            variant='outlined'
+            variant='standard'
             margin='normal'
             autoComplete='current-password'
             onChange={updateFormData}
